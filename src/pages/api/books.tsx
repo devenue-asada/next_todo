@@ -1,5 +1,5 @@
 import type { NextApiRequest, NextApiResponse } from "next";
-import { TBooks } from "../types/book";
+import { TBooks } from "../types/books";
 
 // Google Books API からキーワードに関する書籍を検索する関数
 export async function getData(keyword: string): Promise<TBooks> {

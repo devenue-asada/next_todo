@@ -1,6 +1,6 @@
 import { GetServerSideProps } from "next";
 import { getData } from "./api/books";
-import { TBooks } from "./types/book";
+import { TBooks } from "./types/books";
 
 type TProps = {
   items: TBooks;

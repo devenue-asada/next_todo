@@ -1,7 +1,7 @@
 import Book from "./books";
 import { GetServerSideProps } from "next";
 import { getData } from "./api/books";
-import { TBooks } from "./types/book";
+import { TBooks } from "./types/books";
 
 export default function Home(props: any) {
   console.log(props);
