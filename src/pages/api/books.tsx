@@ -1,15 +1,14 @@
 import type { NextApiRequest, NextApiResponse } from "next";
-import { TBooks } from "../types/books";
+import { TBooks, TResBook } from "../types/books";
 
-// Google Books API からキーワードに関する書籍を検索する関数
 export async function getData(keyword: string): Promise<TBooks> {
   const res = await fetch("https://www.googleapis.com/books/v1/volumes?q=" + encodeURIComponent(keyword));
-  const jsonData = await res.json();
-  return jsonData.items.map((elem: any) => {
+  const { items } = await res.json();
+  return items.map((item: TResBook) => {
     return {
-      id: elem.id,
-      title: elem.volumeInfo.title,
-      pageCount: elem.pageCount || null,
+      id: item.id,
+      title: item.volumeInfo.title,
+      pageCount: item.pageCount || null,
     };
   });
 }
