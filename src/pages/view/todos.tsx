@@ -2,11 +2,11 @@ import { GetServerSideProps } from "next";
 import { getData } from "../api/books";
 import { TBooks } from "../types/books";
 import { useState, useEffect } from "react";
-import { TTodo } from "../types/todos";
+import { TTodo, TTodos } from "../types/todos";
 
 export const Todos = () => {
   //よくあるReactの実装方法なので、一旦nextでSSRで取得だけ
-  const [todos, setTodos] = useState<Array<TTodo> | []>([]);
+  const [todos, setTodos] = useState<TTodos | []>([]);
 
   // console.log(!todos);
   useEffect(() => {
@@ -23,7 +23,7 @@ export const Todos = () => {
       <ul>
         <h3>SPAで取得した一覧</h3>
         {todos.length ? (
-          todos.map((todo) => (
+          todos.map((todo: TTodo) => (
             <li key={todo.id}>
               <p>・{todo.todo}</p>
             </li>
